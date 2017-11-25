@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:weightSum="4">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/musicTitleTab"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        app:tabIndicatorHeight="0dp"
+        android:layout_weight="3">
+        <android.support.design.widget.TabItem
+            android:id="@+id/musicList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/selector_title_my"
+            android:text="123"/>
+        <android.support.design.widget.TabItem
+            android:id="@+id/musicOnline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/selector_title_online"
+            android:text="456"/>
+        <android.support.design.widget.TabItem
+            android:id="@+id/musicCommunity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/selector_title_community"
+            android:text="789"/>
+    </android.support.design.widget.TabLayout>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_weight="1"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp"
+        android:src="@drawable/ic_search"/>
+
+</LinearLayout>
