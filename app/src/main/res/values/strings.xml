@@ -10,4 +10,7 @@
     <string name="musiconline_music">音乐</string>
     <string name="musiconline_video">视频</string>
     <string name="musiconline_radio">电台</string>
+
+    <dimen name="music_list_size">48dp</dimen>
+    <dimen name="music_list_text_size">16sp</dimen>
 </resources>

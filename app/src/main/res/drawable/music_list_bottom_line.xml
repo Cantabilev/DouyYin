@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="false">
+        <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+            <!-- 连框颜色值 -->
+            <item>
+                <shape>
+                    <solid android:color="@color/music_list_bottom_line_grey" />
+                </shape>
+            </item>
+            <!-- 主体背景颜色值 -->
+            <item android:bottom="1dp"> <!--设置只有底部有边框-->
+                <shape>
+                    <solid android:color="@color/app_white" />
+                </shape>
+            </item>
+
+        </layer-list>
+    </item>
+
+    <item android:state_pressed="true" android:drawable="@android:color/transparent">
+
+    </item>
+
+</selector>

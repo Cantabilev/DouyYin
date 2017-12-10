@@ -2,11 +2,179 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_white"
     android:orientation="vertical">
-
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="List"/>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/linearlayout_press_bg"
+                android:clickable="true"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="@dimen/music_list_size"
+                    android:layout_height="@dimen/music_list_size"
+                    android:padding="13dp"
+                    android:src="@drawable/ic_music_red"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/music_list_bottom_line">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="本地音乐 "
+                        android:textColor="@color/app_black_h1"
+                        android:textSize="@dimen/music_list_text_size"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(13)" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/linearlayout_press_bg"
+                android:clickable="true"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="@dimen/music_list_size"
+                    android:layout_height="@dimen/music_list_size"
+                    android:padding="13dp"
+                    android:src="@drawable/ic_recent_play"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/music_list_bottom_line">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="最近播放 "
+                        android:textColor="@color/app_black_h1"
+                        android:textSize="@dimen/music_list_text_size"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(13)" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/linearlayout_press_bg"
+                android:clickable="true"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="@dimen/music_list_size"
+                    android:layout_height="@dimen/music_list_size"
+                    android:padding="13dp"
+                    android:src="@drawable/ic_download_manage"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/music_list_bottom_line">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="下载管理 "
+                        android:textColor="@color/app_black_h1"
+                        android:textSize="@dimen/music_list_text_size"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(13)" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/linearlayout_press_bg"
+                android:clickable="true"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="@dimen/music_list_size"
+                    android:layout_height="@dimen/music_list_size"
+                    android:padding="13dp"
+                    android:src="@drawable/ic_my_station"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/music_list_bottom_line">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="我的电台 "
+                        android:textColor="@color/app_black_h1"
+                        android:textSize="@dimen/music_list_text_size"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(13)" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/linearlayout_press_bg"
+                android:clickable="true"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="@dimen/music_list_size"
+                    android:layout_height="@dimen/music_list_size"
+                    android:padding="13dp"
+                    android:src="@drawable/ic_my_collection"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/music_list_bottom_line">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="我的收藏 "
+                        android:textColor="@color/app_black_h1"
+                        android:textSize="@dimen/music_list_text_size"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(13)" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>
