@@ -9,10 +9,15 @@
     <color name="app_black_h2">#5d5d5d</color><!-- 折叠 List Title-->
     <color name="app_black_h3">#7a7a7a</color><!-- 折叠 List 内下信息-->
     <color name="press_grey">#dcdcdc</color>
+    <color name="control_progress_grey">#bebebe</color>
+    <color name="control_progress_black">#4d4d4d</color>
 
     <color name="colorApp">#d33a29</color>
     <color name="titleCurr">#ffffff</color>
     <color name="titleUn">#e58983</color>
     
     <color name="music_list_bottom_line_grey">#e9e9e9</color>
+
+    <color name="music_control_white">#fff</color>
+    <color name="music_control_black">#4d4d4d</color>
 </resources>
