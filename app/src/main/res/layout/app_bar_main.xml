@@ -21,7 +21,6 @@
 
             <include layout="@layout/douyin_title_bar"/>
 
-
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

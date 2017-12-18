@@ -1,8 +1,5 @@
 package org.cantabile.douyin.activity.home;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -12,28 +9,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.cantabile.compoundcircle.CompoundCircleProgress;
 
 import org.cantabile.douyin.R;
 import org.cantabile.douyin.activity.BaseFragment;
-import org.cantabile.douyin.activity.comm.Indicator;
-import org.cantabile.douyin.activity.fragment.music.MusicCommunity;
+import org.cantabile.douyin.activity.fragment.music.MusicCommunityFra;
 import org.cantabile.douyin.activity.fragment.music.MusicListFra;
 import org.cantabile.douyin.activity.fragment.music.MusicOnlineFra;
 import org.cantabile.douyin.adapter.MusicControlViewPagerAdapter;
 import org.cantabile.douyin.adapter.MusicTitleAdapter;
 import org.cantabile.douyin.comm.MusicInfoBean;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
@@ -115,7 +103,7 @@ public class MainActivity extends AppCompatActivity
         ArrayList<BaseFragment> fragments = new ArrayList<>();
         fragments.add(new MusicListFra());
         fragments.add(new MusicOnlineFra());
-        fragments.add(new MusicCommunity());
+        fragments.add(new MusicCommunityFra());
         adapter.setFragments(fragments);
     }
 

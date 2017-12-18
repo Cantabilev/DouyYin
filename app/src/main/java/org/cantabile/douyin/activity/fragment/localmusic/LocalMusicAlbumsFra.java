@@ -1,20 +1,18 @@
-package org.cantabile.douyin.activity.fragment.music;
+package org.cantabile.douyin.activity.fragment.localmusic;
 
-import android.util.Log;
 import android.view.View;
 
 import org.cantabile.douyin.R;
 import org.cantabile.douyin.activity.BaseFragment;
 
 /**
- * Created by simple on 2017/11/24.
+ * Created by simple on 2017/12/14.
  */
 
-public class MusicCommunity extends BaseFragment {
+public class LocalMusicAlbumsFra extends BaseFragment {
     @Override
     public int BindLayout() {
-        Log.d("QQQ","MusicCommunity");
-        return R.layout.fra_music_community;
+        return R.layout.fra_localmusic_albums;
     }
 
     @Override

@@ -6,4 +6,23 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="music_list_size">48dp</dimen>
+    <dimen name="music_list_text_size">16sp</dimen>
+    <dimen name="music_control_height">48dp</dimen>
+
+    <dimen name="comm_tool_bar_title_size">19sp</dimen>
+    <dimen name="comm_tool_bar_title_size_small">16sp</dimen>
+
+    <!--各个 tablayout 的高度-->
+    <dimen name="tab_height">40dp</dimen>
+
+    <!--item header-->
+    <dimen name="item_header_play_all_height">50dp</dimen>
+    <dimen name="item_header_play_all_title_size">18sp</dimen>
+    <!--常规item 单曲-->
+    <dimen name="item_music_single_height">54dp</dimen>
+    <dimen name="item_music_single_title_size">15sp</dimen>
+    <dimen name="item_music_single_subtitle_size">12sp</dimen>
+
 </resources>

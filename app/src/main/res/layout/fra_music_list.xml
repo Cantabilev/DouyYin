@@ -4,38 +4,45 @@
     android:layout_height="match_parent"
     android:background="@color/app_white"
     android:orientation="vertical">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/llLocalMusic"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@drawable/linearlayout_press_bg"
                 android:clickable="true"
                 android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="@dimen/music_list_size"
                     android:layout_height="@dimen/music_list_size"
                     android:padding="13dp"
-                    android:src="@drawable/ic_music_red"/>
+                    android:src="@drawable/ic_music_red" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
+                    android:background="@drawable/music_list_bottom_line"
                     android:gravity="center_vertical"
-                    android:background="@drawable/music_list_bottom_line">
+                    android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="本地音乐 "
+                        android:text="@string/localmusic"
                         android:textColor="@color/app_black_h1"
-                        android:textSize="@dimen/music_list_text_size"/>
+                        android:textSize="@dimen/music_list_text_size" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -44,30 +51,36 @@
 
 
             </LinearLayout>
+
             <LinearLayout
+                android:id="@+id/llRecentMusic"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@drawable/linearlayout_press_bg"
                 android:clickable="true"
                 android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="@dimen/music_list_size"
                     android:layout_height="@dimen/music_list_size"
                     android:padding="13dp"
-                    android:src="@drawable/ic_recent_play"/>
+                    android:src="@drawable/ic_recent_play" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
+                    android:background="@drawable/music_list_bottom_line"
                     android:gravity="center_vertical"
-                    android:background="@drawable/music_list_bottom_line">
+                    android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="最近播放 "
+                        android:text="@string/recentplay"
                         android:textColor="@color/app_black_h1"
-                        android:textSize="@dimen/music_list_text_size"/>
+                        android:textSize="@dimen/music_list_text_size" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -76,30 +89,36 @@
 
 
             </LinearLayout>
+
             <LinearLayout
+                android:id="@+id/llDownloadManage"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@drawable/linearlayout_press_bg"
                 android:clickable="true"
                 android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="@dimen/music_list_size"
                     android:layout_height="@dimen/music_list_size"
                     android:padding="13dp"
-                    android:src="@drawable/ic_download_manage"/>
+                    android:src="@drawable/ic_download_manage" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
+                    android:background="@drawable/music_list_bottom_line"
                     android:gravity="center_vertical"
-                    android:background="@drawable/music_list_bottom_line">
+                    android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="下载管理 "
+                        android:text="@string/downloadmanage"
                         android:textColor="@color/app_black_h1"
-                        android:textSize="@dimen/music_list_text_size"/>
+                        android:textSize="@dimen/music_list_text_size" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -108,30 +127,36 @@
 
 
             </LinearLayout>
+
             <LinearLayout
+                android:id="@+id/llMyRadio"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@drawable/linearlayout_press_bg"
                 android:clickable="true"
                 android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="@dimen/music_list_size"
                     android:layout_height="@dimen/music_list_size"
                     android:padding="13dp"
-                    android:src="@drawable/ic_my_station"/>
+                    android:src="@drawable/ic_my_station" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
+                    android:background="@drawable/music_list_bottom_line"
                     android:gravity="center_vertical"
-                    android:background="@drawable/music_list_bottom_line">
+                    android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="我的电台 "
+                        android:text="@string/myradio"
                         android:textColor="@color/app_black_h1"
-                        android:textSize="@dimen/music_list_text_size"/>
+                        android:textSize="@dimen/music_list_text_size" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -140,36 +165,41 @@
 
 
             </LinearLayout>
+
             <LinearLayout
+                android:id="@+id/llMyCollection"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@drawable/linearlayout_press_bg"
                 android:clickable="true"
                 android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="@dimen/music_list_size"
                     android:layout_height="@dimen/music_list_size"
                     android:padding="13dp"
-                    android:src="@drawable/ic_my_collection"/>
+                    android:src="@drawable/ic_my_collection" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
+                    android:background="@drawable/music_list_bottom_line"
                     android:gravity="center_vertical"
-                    android:background="@drawable/music_list_bottom_line">
+                    android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="我的收藏 "
+                        android:text="@string/mycollection"
                         android:textColor="@color/app_black_h1"
-                        android:textSize="@dimen/music_list_text_size"/>
+                        android:textSize="@dimen/music_list_text_size" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="(13)" />
                 </LinearLayout>
-
 
             </LinearLayout>
 

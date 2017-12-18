@@ -2,13 +2,14 @@ package org.cantabile.douyin.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import org.cantabile.douyin.CustomApplication;
 import org.cantabile.douyin.interfaces.IActBase;
 
 
-public abstract class BaseActivity extends Activity implements IActBase {
+public abstract class BaseActivity extends AppCompatActivity implements IActBase {
 
     /**
      * 整个应用的Application

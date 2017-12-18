@@ -8,40 +8,59 @@ import android.os.Parcelable;
  */
 
 public class MusicInfoBean implements Parcelable {
-    private String iconUrl;// 图片地址
-    private String singName;// 歌曲名
-    private String singer;// 歌手
+    private long musicId;// 音乐ID
+    private long albumId;// 唱片ID
+    private String album;// 唱片
+    private String title;// 音乐标题
+    private String artist;// 艺术家
     // TODO 歌词
     private boolean favorite;// 是否喜欢
     private boolean download;// 是否下载
     private int commentCount;// 评论数
-    private String album;// 专辑
     private String source;// 来源
-    private int time;// 歌曲时长
+    private long duration;// 歌曲时长
     private int currTime;// 当前播放位置
+    private long size;// 文件大小
+    private String pathUrl;// 文件路径
 
-    public String getIconUrl() {
-        return iconUrl;
+    public long getMusicId() {
+        return musicId;
     }
 
-    public void setIconUrl(String iconUrl) {
-        this.iconUrl = iconUrl;
+    public void setMusicId(long musicId) {
+        this.musicId = musicId;
     }
 
-    public String getSingName() {
-        return singName;
+    public long getAlbumId() {
+        return albumId;
     }
 
-    public void setSingName(String singName) {
-        this.singName = singName;
+    public void setAlbumId(long albumId) {
+        this.albumId = albumId;
     }
 
-    public String getSinger() {
-        return singer;
+    public String getAlbum() {
+        return album;
     }
 
-    public void setSinger(String singer) {
-        this.singer = singer;
+    public void setAlbum(String album) {
+        this.album = album;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
     }
 
     public boolean isFavorite() {
@@ -68,14 +87,6 @@ public class MusicInfoBean implements Parcelable {
         this.commentCount = commentCount;
     }
 
-    public String getAlbum() {
-        return album;
-    }
-
-    public void setAlbum(String album) {
-        this.album = album;
-    }
-
     public String getSource() {
         return source;
     }
@@ -84,12 +95,12 @@ public class MusicInfoBean implements Parcelable {
         this.source = source;
     }
 
-    public int getTime() {
-        return time;
+    public long getDuration() {
+        return duration;
     }
 
-    public void setTime(int time) {
-        this.time = time;
+    public void setDuration(long duration) {
+        this.duration = duration;
     }
 
     public int getCurrTime() {
@@ -100,6 +111,22 @@ public class MusicInfoBean implements Parcelable {
         this.currTime = currTime;
     }
 
+    public long getSize() {
+        return size;
+    }
+
+    public void setSize(long size) {
+        this.size = size;
+    }
+
+    public String getPathUrl() {
+        return pathUrl;
+    }
+
+    public void setPathUrl(String pathUrl) {
+        this.pathUrl = pathUrl;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -107,32 +134,38 @@ public class MusicInfoBean implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.iconUrl);
-        dest.writeString(this.singName);
-        dest.writeString(this.singer);
+        dest.writeLong(this.musicId);
+        dest.writeLong(this.albumId);
+        dest.writeString(this.album);
+        dest.writeString(this.title);
+        dest.writeString(this.artist);
         dest.writeByte(this.favorite ? (byte) 1 : (byte) 0);
         dest.writeByte(this.download ? (byte) 1 : (byte) 0);
         dest.writeInt(this.commentCount);
-        dest.writeString(this.album);
         dest.writeString(this.source);
-        dest.writeInt(this.time);
+        dest.writeLong(this.duration);
         dest.writeInt(this.currTime);
+        dest.writeLong(this.size);
+        dest.writeString(this.pathUrl);
     }
 
     public MusicInfoBean() {
     }
 
     protected MusicInfoBean(Parcel in) {
-        this.iconUrl = in.readString();
-        this.singName = in.readString();
-        this.singer = in.readString();
+        this.musicId = in.readLong();
+        this.albumId = in.readLong();
+        this.album = in.readString();
+        this.title = in.readString();
+        this.artist = in.readString();
         this.favorite = in.readByte() != 0;
         this.download = in.readByte() != 0;
         this.commentCount = in.readInt();
-        this.album = in.readString();
         this.source = in.readString();
-        this.time = in.readInt();
+        this.duration = in.readLong();
         this.currTime = in.readInt();
+        this.size = in.readLong();
+        this.pathUrl = in.readString();
     }
 
     public static final Parcelable.Creator<MusicInfoBean> CREATOR = new Parcelable.Creator<MusicInfoBean>() {

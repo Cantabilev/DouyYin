@@ -11,7 +11,19 @@
     <string name="musiconline_video">视频</string>
     <string name="musiconline_radio">电台</string>
 
-    <dimen name="music_list_size">48dp</dimen>
-    <dimen name="music_list_text_size">16sp</dimen>
-    <dimen name="music_control_height">48dp</dimen>
+    <string name="localmusic">本地音乐&#160;</string>
+    <string name="recentplay">最近播放&#160;</string>
+    <string name="downloadmanage">下载管理&#160;</string>
+    <string name="myradio">我的电台&#160;</string>
+    <string name="mycollection">我的收藏&#160;</string>
+
+    <!--本地音乐 tab Text-->
+    <string name="localmusic_tab_single">单曲</string>
+    <string name="localmusic_tab_singer">歌手</string>
+    <string name="localmusic_tab_albums">专辑</string>
+    <string name="localmusic_tab_folder">文件夹</string>
+
+    <string name="item_hear_play_all">播放全部</string>
+    <string name="item_hear_play_multi_select">多选</string>
+
 </resources>

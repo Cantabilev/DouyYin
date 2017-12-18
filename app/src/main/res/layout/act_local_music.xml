@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_local_music"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.cantabile.douyin.activity.localmusic.LocalMusicAct">
+
+    <org.cantabile.douyin.ui.CommToolBar
+        android:id="@+id/commToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="@string/localmusic"
+        app:option_search="visible"
+        app:option_option="visible"
+        android:layout_alignParentTop="true"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/localMusicTab"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_height"
+        android:layout_below="@+id/commToolBar"
+        android:background="@color/tabBg"
+        app:tabIndicatorColor="@color/tabCurr"
+        app:tabSelectedTextColor="@color/tabCurr"
+        app:tabTextColor="@color/tabUn">
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/localMusicSingle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/localmusic_tab_single"/>
+        <android.support.design.widget.TabItem
+            android:id="@+id/localMusicSinger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/localmusic_tab_singer"/>
+        <android.support.design.widget.TabItem
+            android:id="@+id/localMusicAlbums"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/localmusic_tab_albums"/>
+        <android.support.design.widget.TabItem
+            android:id="@+id/localMusicFolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/localmusic_tab_folder"/>
+
+
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/localMusicViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/localMusicTab"/>
+
+
+    <include layout="@layout/view_bottom_music_control"/>
+
+</RelativeLayout>

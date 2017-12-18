@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_music_single_height"
+    android:background="@drawable/music_single_press_bg"
+    android:clickable="true"
+    android:paddingLeft="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_toLeftOf="@+id/iconOption">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvSong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/item_music_single_title_size"
+                    android:textColor="@color/item_music_single_title_black"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:text="You're Beautiful (Clean Edit)"/>
+                <ImageView
+                    android:id="@+id/iconSongMV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_play_mv"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/iconDownloadAlready"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_download_already"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"/>
+
+                <ImageView
+                    android:id="@+id/iconSQ"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_sq" />
+
+                <TextView
+                    android:id="@+id/tvSinger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/item_music_single_subtitle_size"
+                    android:textColor="@color/item_music_single_subtitle_grey"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:text="邓丽君-漫步的人生"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iconOption"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:paddingTop="17dp"
+            android:paddingBottom="17dp"
+            android:src="@drawable/ic_music_single_option"
+            android:background="@drawable/music_single_press_bg"
+            android:clickable="true"
+            android:layout_alignParentRight="true"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/item_music_single_bottom_line_grey"/>
+
+</RelativeLayout>
