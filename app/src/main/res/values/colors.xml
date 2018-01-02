@@ -9,8 +9,12 @@
     <color name="app_black_h2">#5d5d5d</color><!-- 折叠 List Title-->
     <color name="app_black_h3">#7a7a7a</color><!-- 折叠 List 内下信息-->
     <color name="press_grey">#dcdcdc</color>
+
+    <!--Music Control Bottom bar-->
     <color name="control_progress_grey">#bebebe</color>
     <color name="control_progress_black">#4d4d4d</color>
+    <color name="music_control_title_color">#4d4d4d</color>
+    <color name="music_control_subtitle_color">#6e6e6e</color>
 
     <color name="colorApp">#d33a29</color>
     <color name="titleCurr">#ffffff</color>
@@ -35,6 +39,16 @@
     <!--常规item 单曲-->
     <color name="item_music_single_grey">#e6e6e6</color>
     <color name="item_music_single_title_black">#4d4d4d</color>
-    <color name="item_music_single_subtitle_grey">#787878</color>
+    <color name="item_music_single_subtitle_grey">#6e6e6e</color>
     <color name="item_music_single_bottom_line_grey">#dcdcdc</color>
+
+    <!--正在播放音乐详情页面 toobar -->
+    <color name="music_detail_tool_bar_title_color">#ffffff</color>
+    <color name="music_detail_seek_bar_bg">#966e6e6e</color>
+    <color name="music_detail_seek_bar_secondary_progress">#78ffffff</color>
+    <color name="music_detail_seek_bar_progress">#e93a29</color>
+    <color name="music_detail_tool_bar_subtitle_color">#78ffffff</color>
+    <color name="music_detail_bottom_curr_time_color">#b4ffffff</color>
+    <color name="music_detail_bottom_total_time_color">#64ffffff</color>
+    <color name="music_detail_viewpager_bg_color">#32dcdcdc</color>
 </resources>

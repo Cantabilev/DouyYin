@@ -9,8 +9,13 @@
 
     <dimen name="music_list_size">48dp</dimen>
     <dimen name="music_list_text_size">16sp</dimen>
-    <dimen name="music_control_height">48dp</dimen>
 
+    <!--Music  Control Bottom bar -->
+    <dimen name="music_control_height">48dp</dimen>
+    <dimen name="music_control_title_size">13sp</dimen>
+    <dimen name="music_control_subtitle_size">11sp</dimen>
+
+    <!--常规 toolbar-->
     <dimen name="comm_tool_bar_title_size">19sp</dimen>
     <dimen name="comm_tool_bar_title_size_small">16sp</dimen>
 
@@ -23,6 +28,12 @@
     <!--常规item 单曲-->
     <dimen name="item_music_single_height">54dp</dimen>
     <dimen name="item_music_single_title_size">15sp</dimen>
-    <dimen name="item_music_single_subtitle_size">12sp</dimen>
+    <dimen name="item_music_single_subtitle_size">11sp</dimen>
+
+    <!--正在播放音乐详情页面 toobar -->
+    <dimen name="music_detail_tool_bar_title_size">16sp</dimen>
+    <dimen name="music_detail_tool_bar_subtitle_size">13sp</dimen>
+    <dimen name="music_detail_bottom_control_height">118dp</dimen>
+    <dimen name="music_detail_bottom_time_size">10sp</dimen>
 
 </resources>

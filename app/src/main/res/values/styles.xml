@@ -20,11 +20,21 @@
     <style name="AnimationActivity" parent="AppTheme">
         <item name="android:windowAnimationStyle">@style/enterandentrance</item>
     </style>
+    <!--<style name="enterandentrance">-->
+        <!--<item name="android:activityOpenEnterAnimation">@anim/act_in</item>-->
+        <!--<item name="android:activityOpenExitAnimation">@anim/act_out</item>-->
+        <!--<item name="android:activityCloseEnterAnimation">@anim/act_in</item>-->
+        <!--<item name="android:activityCloseExitAnimation">@anim/act_out</item>-->
+    <!--</style>-->
     <style name="enterandentrance">
-        <item name="android:activityOpenEnterAnimation">@anim/act_in</item>
-        <item name="android:activityOpenExitAnimation">@anim/act_out</item>
-        <item name="android:activityCloseEnterAnimation">@anim/act_in</item>
-        <item name="android:activityCloseExitAnimation">@anim/act_out</item>
+        <!--A 启动 B 时，B 出现在屏幕上，这时执行的是B的-->
+        <!--<item name="android:activityOpenEnterAnimation">@anim/act_in</item>-->
+        <!--&lt;!&ndash;A 启动 B 时，A 从屏幕上消失，这时执行的是A的&ndash;&gt;-->
+        <!--<item name="android:activityOpenExitAnimation">@anim/act_nothing_todo</item>-->
+        <!--&lt;!&ndash;从 B 返回A时，A 出现在屏幕上，这时执行的是A的&ndash;&gt;-->
+        <!--<item name="android:activityCloseEnterAnimation">@anim/act_nothing_todo</item>-->
+        <!--&lt;!&ndash;从 B 返回A时，B从屏幕上消失，这时执行的是B的&ndash;&gt;-->
+        <!--<item name="android:activityCloseExitAnimation">@anim/act_out</item>-->
     </style>
 
 </resources>

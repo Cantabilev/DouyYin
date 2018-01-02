@@ -5,15 +5,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import org.cantabile.douyin.R;
 import org.cantabile.douyin.activity.BaseFragment;
 import org.cantabile.douyin.adapter.CommMusicAdapter;
 import org.cantabile.douyin.adapter.wrapper.HeaderAndFooterWrapper;
-import org.cantabile.douyin.comm.MusicInfoBean;
+import org.cantabile.douyin.application.AppCache;
+import org.cantabile.douyin.entity.MusicInfoBean;
 import org.cantabile.douyin.util.MusicCommUtil;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by simple on 2017/12/14.
@@ -51,12 +54,29 @@ public class LocalMusicSingleFra extends BaseFragment {
         mHeaderAndFooterWrapper.addHeaderView(header);
         mHeaderAndFooterWrapper.addFootView(footer);
         musicRecyclerView.setAdapter(mHeaderAndFooterWrapper);
+
+        adapter.setOnMusicItemClickListener(new CommMusicAdapter.ViewHolder.OnMusicItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                getPlayService().play(position - mHeaderAndFooterWrapper.getHeadersCount());
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        });
     }
 
     @Override
     public void loadData() {
-        ArrayList<MusicInfoBean> musics = MusicCommUtil.getMusics(getActivity().getContentResolver());
-        adapter.setList(musics);
+        ArrayList<MusicInfoBean> musics = AppCache.getMusicList();
+        if (musics != null && musics.size() > 0) {
+            adapter.setList(musics);
+            ((TextView)header.findViewById(R.id.tvCount)).setText(getString(R.string.parentheses_all_count, musics.size()));
+        }else {
+            //TODO 显示暂无本地歌曲 占位图
+        }
     }
 
     @Override

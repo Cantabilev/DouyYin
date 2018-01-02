@@ -54,9 +54,8 @@
         android:id="@+id/localMusicViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/localMusicTab"/>
+        android:layout_below="@+id/localMusicTab" />
 
-
-    <include layout="@layout/view_bottom_music_control"/>
+    <include layout="@layout/view_bottom_music_control" />
 
 </RelativeLayout>

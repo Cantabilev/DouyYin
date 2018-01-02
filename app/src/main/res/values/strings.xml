@@ -1,11 +1,15 @@
 <resources>
-    <string name="app_name">DouyYin</string>
+    <string name="app_name">DouyMusic</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
 
+    <string name="no_permission_storage">未获得读写权限，即将退出</string>
+
+    <string name="parentheses_count">(%d)</string>
+    <string name="parentheses_all_count">(共%d首)</string>
 
     <string name="musiconline_music">音乐</string>
     <string name="musiconline_video">视频</string>
@@ -26,4 +30,15 @@
     <string name="item_hear_play_all">播放全部</string>
     <string name="item_hear_play_multi_select">多选</string>
 
+    <!--Comm 设置-->
+    <string name="setting_key_mobile_network_play">mobile_network_play</string>
+    <string name="setting_key_mobile_network_download">mobile_network_download</string>
+
+    <!--音乐播放详情页 开始时间/当前时间-->
+    <string name="music_detail_start_time">00:00</string>
+
+    <!--音乐播放模式-->
+    <string name="mode_loop">列表循环</string>
+    <string name="mode_shuffle">随机播放</string>
+    <string name="mode_one">单曲循环</string>
 </resources>

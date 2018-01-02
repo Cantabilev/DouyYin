@@ -65,7 +65,7 @@ public class CompoundCircleProgress extends View implements Checkable, View.OnCl
     private RectF mRectF;
     //渐变的颜色是360度，如果只显示270，那么则会缺失部分颜色
     private SweepGradient mSweepGradient;
-    private int[] mGradientColors = {Color.GREEN, Color.YELLOW, Color.RED};
+    private int[] mGradientColors = { Color.RED, Color.RED, Color.RED};// 渐变色
     //当前进度，[0.0f,1.0f]
     private float mPercent;
     //动画时间
@@ -92,6 +92,7 @@ public class CompoundCircleProgress extends View implements Checkable, View.OnCl
 
     private boolean mChecked = false;
     private OnCheckedChangeListener checkedChangeListener;
+    private OnClickListener onClickListener;// 用户的监听器
 
 
     public CompoundCircleProgress(Context context) {
@@ -480,7 +481,7 @@ public class CompoundCircleProgress extends View implements Checkable, View.OnCl
 
     @Override
     public void setOnClickListener(OnClickListener l) {
-        Log.d("CompoundCircleProgress", "暂未开发OnClickListener");
+        onClickListener = l;
         super.setOnClickListener(CompoundCircleProgress.this);
     }
 
@@ -489,6 +490,8 @@ public class CompoundCircleProgress extends View implements Checkable, View.OnCl
         mChecked = !mChecked;
         if(checkedChangeListener != null)
             checkedChangeListener.onCheckedChanged(CompoundCircleProgress.this, mChecked);
+        if(onClickListener != null)// 回调用户的 监听器
+            onClickListener.onClick(view);
         invalidate();
     }
 

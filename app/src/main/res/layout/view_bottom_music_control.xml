@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llMusicBottomControl"
     android:layout_width="match_parent"
     android:layout_height="@dimen/music_control_height"
     android:layout_alignParentBottom="true"
@@ -17,6 +18,7 @@
         android:background="@color/music_control_white" />
 
     <com.cantabile.compoundcircle.CompoundCircleProgress
+        android:id="@+id/controlUI"
         app:antiAlias="true"
         app:arcWidth="1.4dp"
         app:bgArcColorOff="@color/control_progress_black"
@@ -25,9 +27,10 @@
         app:bgPicColorOff="@color/control_progress_black"
         app:bgPicColorOn="@color/colorApp"
         app:maxValue="100"
+        app:value="0"
         app:startAngle="270"
         app:sweepAngle="360"
-        app:value="100"
+        app:animTime="1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1.2"

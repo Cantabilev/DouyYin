@@ -44,6 +44,7 @@
                         android:textSize="@dimen/music_list_text_size" />
 
                     <TextView
+                        android:id="@+id/tvLocalMusicCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="(13)" />

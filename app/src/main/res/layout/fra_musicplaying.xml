@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.cantabile.douyin.activity.fragment.MusicPlayingFra">
+
+    <ImageView
+        android:id="@+id/iconBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/play_page_default_bg"/>
+
+    <LinearLayout
+        android:id="@+id/llContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iconBack"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:paddingLeft="12dp"
+                android:paddingRight="8dp"
+                android:src="@drawable/ic_back"
+                android:clickable="true"
+                android:background="@drawable/comm_tool_bar_press_bg"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/music_detail_tool_bar_title_size"
+                    android:textColor="@color/music_detail_tool_bar_title_color"
+                    android:text="音乐名字"/>
+                <TextView
+                    android:id="@+id/tvArtists"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/music_detail_tool_bar_subtitle_size"
+                    android:textColor="@color/music_detail_tool_bar_subtitle_color"
+                    android:text="艺术家"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iconShare"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:paddingLeft="8dp"
+                android:paddingRight="12dp"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/frameContent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="10dp"
+            android:orientation="vertical"
+            android:layout_height="@dimen/music_detail_bottom_control_height">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tvCurrTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/music_detail_bottom_time_size"
+                    android:textColor="@color/music_detail_bottom_curr_time_color"
+                    android:text="02:52"/>
+                <SeekBar
+                    android:id="@+id/seekBarMusic"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:maxHeight="1.5dp"
+                    android:minHeight="1.5dp"
+                    android:layout_weight="1"
+                    android:max="100"
+                    android:progress="50"
+                    android:secondaryProgress="70"
+                    android:progressDrawable="@drawable/progress_music_drawable"
+                    android:thumb="@drawable/thumb_circle"/>
+                <TextView
+                    android:id="@+id/tvTotalTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/music_detail_bottom_time_size"
+                    android:textColor="@color/music_detail_bottom_total_time_color"
+                    android:text="03:46"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="2dp"
+                android:paddingBottom="5dp">
+                <ImageView
+                    android:id="@+id/iconMode"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/play_mode_level_list"/>
+                <ImageView
+                    android:id="@+id/iconPrev"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/play_btn_prev_selector"/>
+                <ImageView
+                    android:id="@+id/iconPlay"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.2"
+                    android:src="@drawable/play_btn_play_pause_selector"/>
+                <ImageView
+                    android:id="@+id/iconNext"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/play_btn_next_selector"/>
+                <ImageView
+                    android:id="@+id/iconPlayList"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/play_btn_list_selector"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

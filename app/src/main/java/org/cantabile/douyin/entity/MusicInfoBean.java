@@ -1,4 +1,4 @@
-package org.cantabile.douyin.comm;
+package org.cantabile.douyin.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,20 +8,35 @@ import android.os.Parcelable;
  */
 
 public class MusicInfoBean implements Parcelable {
+    // 歌曲类型:本地/网络
+    private Type type;
     private long musicId;// 音乐ID
     private long albumId;// 唱片ID
+    private String coverPath;// [在线歌曲]专辑封面路径
     private String album;// 唱片
     private String title;// 音乐标题
     private String artist;// 艺术家
     // TODO 歌词
     private boolean favorite;// 是否喜欢
-    private boolean download;// 是否下载
     private int commentCount;// 评论数
     private String source;// 来源
     private long duration;// 歌曲时长
     private int currTime;// 当前播放位置
     private long size;// 文件大小
     private String pathUrl;// 文件路径
+
+    public enum Type {
+        LOCAL,
+        ONLINE
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
 
     public long getMusicId() {
         return musicId;
@@ -37,6 +52,14 @@ public class MusicInfoBean implements Parcelable {
 
     public void setAlbumId(long albumId) {
         this.albumId = albumId;
+    }
+
+    public String getCoverPath() {
+        return coverPath;
+    }
+
+    public void setCoverPath(String coverPath) {
+        this.coverPath = coverPath;
     }
 
     public String getAlbum() {
@@ -69,14 +92,6 @@ public class MusicInfoBean implements Parcelable {
 
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
-    }
-
-    public boolean isDownload() {
-        return download;
-    }
-
-    public void setDownload(boolean download) {
-        this.download = download;
     }
 
     public int getCommentCount() {
@@ -127,6 +142,14 @@ public class MusicInfoBean implements Parcelable {
         this.pathUrl = pathUrl;
     }
 
+    /**
+     * 对比本地歌曲是否相同
+     */
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof MusicInfoBean && this.getMusicId() == ((MusicInfoBean) o).getMusicId();
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -134,13 +157,14 @@ public class MusicInfoBean implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.type == null ? -1 : this.type.ordinal());
         dest.writeLong(this.musicId);
         dest.writeLong(this.albumId);
+        dest.writeString(this.coverPath);
         dest.writeString(this.album);
         dest.writeString(this.title);
         dest.writeString(this.artist);
         dest.writeByte(this.favorite ? (byte) 1 : (byte) 0);
-        dest.writeByte(this.download ? (byte) 1 : (byte) 0);
         dest.writeInt(this.commentCount);
         dest.writeString(this.source);
         dest.writeLong(this.duration);
@@ -153,13 +177,15 @@ public class MusicInfoBean implements Parcelable {
     }
 
     protected MusicInfoBean(Parcel in) {
+        int tmpType = in.readInt();
+        this.type = tmpType == -1 ? null : Type.values()[tmpType];
         this.musicId = in.readLong();
         this.albumId = in.readLong();
+        this.coverPath = in.readString();
         this.album = in.readString();
         this.title = in.readString();
         this.artist = in.readString();
         this.favorite = in.readByte() != 0;
-        this.download = in.readByte() != 0;
         this.commentCount = in.readInt();
         this.source = in.readString();
         this.duration = in.readLong();

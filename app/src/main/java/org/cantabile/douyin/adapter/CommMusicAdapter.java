@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.cantabile.douyin.R;
-import org.cantabile.douyin.comm.MusicInfoBean;
+import org.cantabile.douyin.entity.MusicInfoBean;
 
 import java.util.ArrayList;
 
@@ -24,6 +24,7 @@ public class CommMusicAdapter extends RecyclerView.Adapter<CommMusicAdapter.View
 
     private Context mContext;
     private ArrayList<MusicInfoBean> list;
+    private ViewHolder.OnMusicItemClickListener onMusicItemClickListener;
 
     public CommMusicAdapter(Context mContext) {
         this.mContext = mContext;
@@ -34,9 +35,13 @@ public class CommMusicAdapter extends RecyclerView.Adapter<CommMusicAdapter.View
         this.list = list;
     }
 
+    public void setOnMusicItemClickListener(ViewHolder.OnMusicItemClickListener onMusicItemClickListener) {
+        this.onMusicItemClickListener = onMusicItemClickListener;
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ViewHolder holder = new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_music_single, parent, false));
+        ViewHolder holder = new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_music_single, parent, false), onMusicItemClickListener);
         return holder;
     }
 
@@ -45,7 +50,6 @@ public class CommMusicAdapter extends RecyclerView.Adapter<CommMusicAdapter.View
         MusicInfoBean music = list.get(position);
         holder.tvSong.setText(music.getTitle());
         holder.tvSinger.setText(music.getArtist()+" - "+music.getAlbum());
-        //TODO 绑定item  数据 以及 设置监听事件
     }
 
     @Override
@@ -95,9 +99,34 @@ public class CommMusicAdapter extends RecyclerView.Adapter<CommMusicAdapter.View
         @BindView(R.id.iconOption)
         ImageView iconOption;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView, final OnMusicItemClickListener listener) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null){
+                        listener.onItemClick(view, getLayoutPosition());
+                    }
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    if (listener != null) {
+                        listener.onItemLongClick(view, getLayoutPosition());
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        }
+
+        public interface OnMusicItemClickListener {
+            public void onItemClick(View view, int position);
+
+            public void onItemLongClick(View view, int position);
         }
     }
 }

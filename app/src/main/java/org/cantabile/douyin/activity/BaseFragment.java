@@ -2,14 +2,18 @@ package org.cantabile.douyin.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.cantabile.douyin.CustomApplication;
+import org.cantabile.douyin.application.AppCache;
+import org.cantabile.douyin.application.CustomApplication;
 import org.cantabile.douyin.interfaces.IFraBase;
+import org.cantabile.douyin.service.PlayService;
+import org.cantabile.douyin.util.PermissionReq;
 
 /**
  * Created by Kbin on 2017/1/17.
@@ -22,7 +26,6 @@ public abstract class BaseFragment extends Fragment implements IFraBase {
     /** 当前Fragment渲染的layoutId **/
     private int LayoutId=0;
 
-    private boolean isRePaintView=false;
     /** 日志输出标志 **/
     protected final String TAG = this.getClass().getSimpleName();
     @Override
@@ -113,8 +116,18 @@ public abstract class BaseFragment extends Fragment implements IFraBase {
         super.onDetach();
     }
 
-    public void setRePaintView(boolean rePaintView) {
-        isRePaintView = rePaintView;
+    protected PlayService getPlayService() {
+        PlayService playService = AppCache.getPlayService();
+        if (playService == null) {
+            throw new NullPointerException("play service is null");
+        }
+        return playService;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionReq.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     /**
