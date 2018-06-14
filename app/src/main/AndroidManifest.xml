@@ -37,6 +37,11 @@
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".activity.login.LoginAct"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
