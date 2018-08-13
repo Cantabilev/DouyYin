@@ -7,6 +7,9 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <!--标题 toolbar 高度-->
+    <dimen name="titleActionBarSize">48dp</dimen>
+
     <dimen name="music_list_size">48dp</dimen>
     <dimen name="music_list_text_size">16sp</dimen>
 
@@ -18,6 +21,7 @@
     <!--常规 toolbar-->
     <dimen name="comm_tool_bar_title_size">19sp</dimen>
     <dimen name="comm_tool_bar_title_size_small">16sp</dimen>
+    <dimen name="comm_tool_bar_height">48dp</dimen>
 
     <!--各个 tablayout 的高度-->
     <dimen name="tab_height">40dp</dimen>

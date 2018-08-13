@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#d33a29</color>
+    <color name="colorPrimaryShadow">#e58983</color>
     <color name="colorPrimaryDark">#d33a29</color>
     <color name="colorAccent">#ff7da9</color>
+    <color name="colorWhite">#ffffff</color>
     <color name="app_white">#f2f4f5</color>
     <color name="app_grey">#e7e9e9ff</color>
     <color name="app_black_h1">#313131</color><!-- 4个 LinearLayout List Title-->

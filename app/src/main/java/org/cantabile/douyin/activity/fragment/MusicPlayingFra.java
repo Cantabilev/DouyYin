@@ -111,7 +111,7 @@ public class MusicPlayingFra extends Fragment implements OnPlayerEventListener {
         iconNext = (ImageView) mView.findViewById(R.id.iconNext);
         iconPlayList = (ImageView) mView.findViewById(R.id.iconPlayList);
 
-//        initSystemBar(); // TODO 沉浸式 状态栏 待解决
+        initSystemBar(); // TODO 沉浸式 状态栏 待解决
 
         frameContent = (FrameLayout) mView.findViewById(R.id.frameContent);
         FragmentTransaction ft = getChildFragmentManager().beginTransaction();

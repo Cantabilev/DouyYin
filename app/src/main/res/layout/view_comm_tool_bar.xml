@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
     android:orientation="horizontal"
     android:background="@color/colorApp">
 
     <ImageView
         android:id="@+id/iconBack"
         android:layout_width="48dp"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/titleActionBarSize"
         android:paddingLeft="12dp"
         android:paddingRight="8dp"
         android:src="@drawable/ic_back"
@@ -17,9 +18,9 @@
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="120dp"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/titleActionBarSize"
         android:gravity="center_vertical"
-        android:lines="1"
+        android:singleLine="true"
         android:ellipsize="marquee"
         android:textColor="@color/comm_tool_bar_white"
         android:textSize="@dimen/comm_tool_bar_title_size"
@@ -31,7 +32,7 @@
     <ImageView
         android:id="@+id/iconOptionsSortType"
         android:layout_width="48dp"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/titleActionBarSize"
         android:padding="12dp"
         android:src="@drawable/ic_sort_type"
         android:clickable="true"
@@ -40,7 +41,7 @@
     <ImageView
         android:id="@+id/iconOptionsSearch"
         android:layout_width="48dp"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/titleActionBarSize"
         android:padding="12dp"
         android:src="@drawable/ic_search"
         android:clickable="true"
@@ -49,7 +50,7 @@
     <ImageView
         android:id="@+id/iconOptionsOption"
         android:layout_width="48dp"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/titleActionBarSize"
         android:padding="12dp"
         android:src="@drawable/ic_option"
         android:clickable="true"
@@ -58,7 +59,7 @@
     <TextView
         android:id="@+id/tvOptionClear"
         android:layout_width="48dp"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/titleActionBarSize"
         android:text="清空"
         android:gravity="center_vertical"
         android:textSize="@dimen/comm_tool_bar_title_size_small"

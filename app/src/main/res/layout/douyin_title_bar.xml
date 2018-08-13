@@ -1,45 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:weightSum="4">
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    android:background="@color/colorApp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/iconLeftMenu"
+        android:layout_width="64dp"
+        android:layout_height="@dimen/comm_tool_bar_height"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@drawable/btn_action_bg_selector"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/ic_menu"/>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/musicTitleTab"
-        android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
+        android:layout_width="120dp"
+        android:layout_height="@dimen/comm_tool_bar_height"
+        android:layout_centerHorizontal="true"
         app:tabIndicatorHeight="0dp"
-        android:layout_weight="3">
+        app:tabPaddingStart="0dp"
+        app:tabPaddingEnd="0dp">
         <android.support.design.widget.TabItem
             android:id="@+id/musicList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/selector_title_my"
-            android:text="123"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:icon="@drawable/selector_title_my" />
         <android.support.design.widget.TabItem
             android:id="@+id/musicOnline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/selector_title_online"
-            android:text="456"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:icon="@drawable/selector_title_online"/>
         <android.support.design.widget.TabItem
             android:id="@+id/musicCommunity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/selector_title_community"
-            android:text="789"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:icon="@drawable/selector_title_community"/>
     </android.support.design.widget.TabLayout>
 
     <ImageView
-        android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_weight="1"
-        android:paddingLeft="13dp"
-        android:paddingRight="13dp"
+        android:layout_width="64dp"
+        android:layout_height="@dimen/comm_tool_bar_height"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@drawable/btn_action_bg_selector"
+        android:layout_alignParentRight="true"
         android:src="@drawable/ic_search"/>
 
-</LinearLayout>
+</RelativeLayout>

@@ -14,10 +14,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TableLayout;
 
 import com.cantabile.compoundcircle.CompoundCircleProgress;
 
@@ -40,7 +42,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
         implements OnPlayerEventListener, NavigationView.OnNavigationItemSelectedListener {
 
+    private DrawerLayout drawerLayout;
     private ViewPager viewPager;
+    private ImageView iconLeftMenu;
     private TabLayout mTabLayout;
     private TabLayout.Tab musicList;
     private TabLayout.Tab musicOnline;
@@ -64,7 +68,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_main);
 
-//        setSystemBarTransparent();// TODO  沉浸式 状态栏问题
+        setSystemBarTransparent();// TODO  沉浸式 状态栏问题
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -78,6 +82,10 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        // 去掉 toolbar 左边图标
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowHomeEnabled(false);
+        }
 
         initValues();
         initView();
@@ -93,7 +101,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initView() {
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
+        iconLeftMenu = (ImageView) findViewById(R.id.iconLeftMenu);
         mTabLayout = (TabLayout) findViewById(R.id.musicTitleTab);
         musicList = mTabLayout.getTabAt(0);
         musicOnline = mTabLayout.getTabAt(1);
@@ -110,6 +120,12 @@ public class MainActivity extends AppCompatActivity
         mTabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
 
+        iconLeftMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
         controlUI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -161,9 +177,10 @@ public class MainActivity extends AppCompatActivity
 
 
     public View getTabView(int position) {
-        ImageView img_title = new ImageView(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.view_tool_bar_custom, null);
+        ImageView img_title = (ImageView) view.findViewById(R.id.iconTitle);
         img_title.setImageResource(titleIcons[position]);
-        return img_title;
+        return view;
     }
 
     private void showPlayingFragment() {
@@ -244,6 +261,26 @@ public class MainActivity extends AppCompatActivity
             // KITKAT解决方案
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            // LOLLIPOP解决方案
+//            // getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//            // getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            // getWindow().setStatusBarColor(Color.TRANSPARENT);
+//            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+//                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            getWindow().setStatusBarColor(Color.TRANSPARENT);
+//            getWindow().setNavigationBarColor(Color.BLACK);
+//        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            // KITKAT解决方案
+//            // getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            getWindow().setFlags(
+//                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+//                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//        }
     }
 
     @Override

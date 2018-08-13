@@ -10,7 +10,7 @@
     <org.cantabile.douyin.ui.CommToolBar
         android:id="@+id/commToolBar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         app:title="@string/localmusic"
         app:option_search="visible"
         app:option_option="visible"

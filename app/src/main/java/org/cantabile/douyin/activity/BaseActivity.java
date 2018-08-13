@@ -17,6 +17,7 @@ import org.cantabile.douyin.application.AppCache;
 import org.cantabile.douyin.application.CustomApplication;
 import org.cantabile.douyin.interfaces.IActBase;
 import org.cantabile.douyin.service.PlayService;
+import org.cantabile.douyin.util.AndroidWorkaround;
 import org.cantabile.douyin.util.PermissionReq;
 
 
@@ -40,7 +41,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IActBase
 
         // 获取整个应用的Application
         app = CustomApplication.getInstance();
-//        setSystemBarTransparent();// TODO 解决 Android 4.4 沉浸式状态栏为问题， 后期为ToolBar添加相应高度
+        setSystemBarTransparent();// TODO 解决 Android 4.4 沉浸式状态栏为问题， 后期为ToolBar添加相应高度
         initVariables();
         initView();
         initEvent();
@@ -111,12 +112,28 @@ public abstract class BaseActivity extends AppCompatActivity implements IActBase
     private void setSystemBarTransparent() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // LOLLIPOP解决方案
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
+             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+             getWindow().setStatusBarColor(Color.TRANSPARENT);
+            // getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+            //        | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            // getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            //        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+            //        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            // getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            // getWindow().setStatusBarColor(Color.TRANSPARENT);
+            // getWindow().setNavigationBarColor(Color.BLACK);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             // KITKAT解决方案
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            // getWindow().setFlags(
+            //        WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+            //        WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+        // 解决华为底部虚拟按键覆盖底部按钮问题
+        if (AndroidWorkaround.checkDeviceHasNavigationBar(this)) {
+            AndroidWorkaround.assistActivity(findViewById(android.R.id.content));
         }
     }
 
