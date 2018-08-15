@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#d33a29</color>
-    <color name="colorPrimaryShadow">#e58983</color>
+    <color name="colorPrimaryShadow">#dcdcdc</color>
     <color name="colorPrimaryDark">#d33a29</color>
     <color name="colorAccent">#ff7da9</color>
     <color name="colorWhite">#ffffff</color>
@@ -53,4 +53,6 @@
     <color name="music_detail_bottom_curr_time_color">#b4ffffff</color>
     <color name="music_detail_bottom_total_time_color">#64ffffff</color>
     <color name="music_detail_viewpager_bg_color">#32dcdcdc</color>
+
+    <color name="search_view_hint_color">#dcdcdc</color>
 </resources>

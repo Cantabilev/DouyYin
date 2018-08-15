@@ -23,7 +23,7 @@ import org.cantabile.douyin.util.PermissionReq;
 
 public abstract class BaseActivity extends AppCompatActivity implements IActBase {
 
-    protected Handler handler = new Handler(Looper.getMainLooper());
+    protected Handler mHandler = new Handler(Looper.getMainLooper());
 
     /**
      * 整个应用的Application
@@ -41,7 +41,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IActBase
 
         // 获取整个应用的Application
         app = CustomApplication.getInstance();
-        setSystemBarTransparent();// TODO 解决 Android 4.4 沉浸式状态栏为问题， 后期为ToolBar添加相应高度
+        setSystemBarTransparent();
         initVariables();
         initView();
         initEvent();

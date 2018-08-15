@@ -19,7 +19,6 @@ import butterknife.ButterKnife;
 /**
  * Created by simple on 2017/12/18.
  */
-
 public class CommMusicAdapter extends RecyclerView.Adapter<CommMusicAdapter.ViewHolder> {
 
     private Context mContext;

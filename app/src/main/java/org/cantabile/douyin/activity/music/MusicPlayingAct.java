@@ -1,26 +1,15 @@
-package org.cantabile.douyin.activity.fragment;
+package org.cantabile.douyin.activity.music;
 
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.animation.TimeInterpolator;
-import android.animation.TypeEvaluator;
-import android.animation.ValueAnimator;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.AsyncTask;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.text.format.DateUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.AnimationSet;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,35 +17,26 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import org.cantabile.douyin.R;
+import org.cantabile.douyin.activity.BaseActivity;
 import org.cantabile.douyin.activity.fragment.musicplaying.MusicPlayingAlbumFra;
 import org.cantabile.douyin.activity.fragment.musicplaying.MusicPlayingLrcFra;
-import org.cantabile.douyin.application.AppCache;
 import org.cantabile.douyin.comm.PlayModeEnum;
 import org.cantabile.douyin.entity.MusicInfoBean;
 import org.cantabile.douyin.interfaces.OnPlayerEventListener;
 import org.cantabile.douyin.service.PlayService;
 import org.cantabile.douyin.util.CoverLoader;
 import org.cantabile.douyin.util.Preferences;
-import org.cantabile.douyin.util.ScreenUtil;
 import org.cantabile.douyin.util.SystemUtil;
 import org.cantabile.douyin.util.ToastUtil;
 
-import static org.cantabile.douyin.application.AppCache.getContext;
 import static org.cantabile.douyin.application.AppCache.getPlayService;
 
-/**
- * 正在播放音乐详情
- * @deprecated 2018-8-13 弃用, 改为 MusicPlayingAct
- */
-public class MusicPlayingFra extends Fragment implements OnPlayerEventListener {
-    protected Handler mHandler = new Handler(Looper.getMainLooper());
+public class MusicPlayingAct extends BaseActivity implements OnPlayerEventListener {
 
     private static String MUSIC_TOKEN = "MUSIC_TOKEN";
     private MusicInfoBean mMusic;
-    private View mView;
     private PlayService mPlayService;
 
-    private LinearLayout llContent;
     private ImageView iconBg;
     private ImageView iconBack;
     private TextView tvTitle, tvArtists;
@@ -72,58 +52,42 @@ public class MusicPlayingFra extends Fragment implements OnPlayerEventListener {
     private MusicPlayingLrcFra mMusicPlayingLrcFra;
     private boolean isAlbum = true;// 是否是 专辑页面 flag  [专辑页面 / 歌词页面]
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fra_musicplaying, container, false);
-        mView = view;
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        initValue();
-        initView();
-        initEvent();
-        initPlayMode();
-        onChangeImpl(mPlayService.getPlayingMusic());
-    }
-
-    private void initValue() {
+    public void initVariables() {
         mPlayService = getPlayService();
+        mPlayService.setOnPlayerEventListener(this);
         mMusicPlayingAlbumFra = new MusicPlayingAlbumFra();
         mMusicPlayingLrcFra = new MusicPlayingLrcFra();
     }
 
+    @Override
     public void initView() {
-        llContent = (LinearLayout) mView.findViewById(R.id.llContent);
-        iconBg = (ImageView) mView.findViewById(R.id.iconBg);
-        iconBack = (ImageView) mView.findViewById(R.id.iconBack);
-        tvTitle = (TextView) mView.findViewById(R.id.tvTitle);
-        tvArtists = (TextView) mView.findViewById(R.id.tvArtists);
-        tvCurrTime = (TextView) mView.findViewById(R.id.tvCurrTime);
-        tvTotalTime = (TextView) mView.findViewById(R.id.tvTotalTime);
-        seekBarMusic = (SeekBar) mView.findViewById(R.id.seekBarMusic);
-        iconMode = (ImageView) mView.findViewById(R.id.iconMode);
-        iconPrev = (ImageView) mView.findViewById(R.id.iconPrev);
-        iconPlay = (ImageView) mView.findViewById(R.id.iconPlay);
-        iconNext = (ImageView) mView.findViewById(R.id.iconNext);
-        iconPlayList = (ImageView) mView.findViewById(R.id.iconPlayList);
+        setContentView(R.layout.act_music_playing);
 
-        initSystemBar(); // TODO 沉浸式 状态栏 待解决
+        iconBg = (ImageView) findViewById(R.id.iconBg);
+        iconBack = (ImageView) findViewById(R.id.iconBack);
+        tvTitle = (TextView) findViewById(R.id.tvTitle);
+        tvArtists = (TextView) findViewById(R.id.tvArtists);
+        tvCurrTime = (TextView) findViewById(R.id.tvCurrTime);
+        tvTotalTime = (TextView) findViewById(R.id.tvTotalTime);
+        seekBarMusic = (SeekBar) findViewById(R.id.seekBarMusic);
+        iconMode = (ImageView) findViewById(R.id.iconMode);
+        iconPrev = (ImageView) findViewById(R.id.iconPrev);
+        iconPlay = (ImageView) findViewById(R.id.iconPlay);
+        iconNext = (ImageView) findViewById(R.id.iconNext);
+        iconPlayList = (ImageView) findViewById(R.id.iconPlayList);
 
-        frameContent = (FrameLayout) mView.findViewById(R.id.frameContent);
-        FragmentTransaction ft = getChildFragmentManager().beginTransaction();
+        frameContent = (FrameLayout) findViewById(R.id.frameContent);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.frameContent, mMusicPlayingAlbumFra).commit();
     }
 
+    @Override
     public void initEvent() {
         iconBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                finish();
             }
         });
         iconMode.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +100,7 @@ public class MusicPlayingFra extends Fragment implements OnPlayerEventListener {
         frameContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction ft = getChildFragmentManager().beginTransaction();
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 if (isAlbum){
                     isAlbum = false;
                     ft.replace(R.id.frameContent, mMusicPlayingLrcFra).commit();
@@ -209,16 +173,6 @@ public class MusicPlayingFra extends Fragment implements OnPlayerEventListener {
                 }
             }
         });
-    }
-
-    /**
-     * 沉浸式状态栏
-     */
-    private void initSystemBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            int top = ScreenUtil.getStatusBarHeight();
-            llContent.setPadding(0, top, 0, 0);
-        }
     }
 
     private void initPlayMode() {
@@ -314,23 +268,37 @@ public class MusicPlayingFra extends Fragment implements OnPlayerEventListener {
         initPlayMode();
     }
 
-    private void onBackPressed() {
-        getActivity().onBackPressed();
-        iconBack.setEnabled(false);
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                iconBack.setEnabled(true);
-            }
-        }, 300);
-    }
-
     private String formatTime(long time) {
         return SystemUtil.formatTime("mm:ss", time);
     }
 
     @Override
+    public void loadData() {
+        onChangeImpl(mPlayService.getPlayingMusic());
+    }
+
+    @Override
+    public void doBusiness() {
+
+    }
+
+    @Override
+    public void resume() {
+        mPlayService = getPlayService();
+        mPlayService.setOnPlayerEventListener(this);
+    }
+
+    @Override
+    public void destroy() {
+
+    }
+
+
+
+    // 音乐播放服务回调接口
+    @Override
     public void onChange(MusicInfoBean music) {
+
         onChangeImpl(music);
         if (mMusicPlayingAlbumFra != null)
             mMusicPlayingAlbumFra.onChange(music);
@@ -384,5 +352,11 @@ public class MusicPlayingFra extends Fragment implements OnPlayerEventListener {
     public void onMusicListUpdate() {
         if (mMusicPlayingAlbumFra != null)
             mMusicPlayingAlbumFra.onMusicListUpdate();
+    }
+
+    public static void startMusicPlayingAct(Context context){
+        Intent intent = new Intent();
+        intent.setClass(context, MusicPlayingAct.class);
+        context.startActivity(intent);
     }
 }

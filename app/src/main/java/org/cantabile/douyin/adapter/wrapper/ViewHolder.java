@@ -15,27 +15,50 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
+import android.widget.Adapter;
 import android.widget.Checkable;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import java.lang.reflect.Field;
 
 /**
  * Created by zhy on 16/6/28.
  * Add by Cantabile on 2017/9/8
  */
-
 public class ViewHolder extends RecyclerView.ViewHolder {
     private SparseArray<View> mViews;
     private View mConvertView;
     private Context mContext;
+    private OnItemClickListener onItemClickListener;
 
     public ViewHolder(Context context, View itemView) {
         super(itemView);
         mContext = context;
         mConvertView = itemView;
         mViews = new SparseArray<View>();
+
+        mConvertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (null !=onItemClickListener)
+                    onItemClickListener.onItemClick(v, getLayoutPosition());
+            }
+        });
+        mConvertView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (null !=onItemClickListener) {
+                    onItemClickListener.onItemLongClick(v, getLayoutPosition());
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
 
@@ -79,9 +102,8 @@ public class ViewHolder extends RecyclerView.ViewHolder {
      * @param text
      * @return
      */
-    public ViewHolder setText(int viewId, int text) {
+    public ViewHolder setText(int viewId, String text) {
         TextView tv = getView(viewId);
-        Log.d("QQQ","tv -> "+tv);
         tv.setText(text);
         return this;
     }
@@ -235,6 +257,16 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         View view = getView(viewId);
         view.setOnLongClickListener(listener);
         return this;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        public void onItemClick(View view, int position);
+
+        public void onItemLongClick(View view, int position);
     }
 
 

@@ -9,6 +9,13 @@ import com.facebook.common.internal.Supplier;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.cache.MemoryCacheParams;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.zhy.http.okhttp.OkHttpUtils;
+
+import org.cantabile.douyin.net.http.HttpInterceptor;
+
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 
 /**
  * Created by simple on 2017/11/24.
@@ -31,6 +38,7 @@ public class CustomApplication extends Application {
         instance = this;
         context = CustomApplication.this;
         AppCache.init(this);
+        initOkHttpUtils();
     }
 
     public Context getContext(){
@@ -101,6 +109,16 @@ public class CustomApplication extends Application {
 //            .setResizeAndRotateEnabledForNetwork(boolean resizeAndRotateEnabledForNetwork)//调整和旋转是否支持网络图片
                 ;
         return builder.build();
+    }
+
+    private void initOkHttpUtils() {
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS)
+                .writeTimeout(10, TimeUnit.SECONDS)
+                .addInterceptor(new HttpInterceptor())
+                .build();
+        OkHttpUtils.initClient(okHttpClient);
     }
 
 }

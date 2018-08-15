@@ -7,9 +7,11 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
         tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
 
     <application
@@ -43,8 +45,10 @@
 
         <activity
             android:name=".activity.login.LoginAct"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.music.MusicPlayingAct" />
+        <activity android:name=".activity.music.NetSearchAct" />
+        <activity android:name=".activity.music.LocalSearchAct"/>
     </application>
 
 </manifest>

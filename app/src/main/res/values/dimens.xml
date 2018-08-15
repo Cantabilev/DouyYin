@@ -40,4 +40,7 @@
     <dimen name="music_detail_bottom_control_height">118dp</dimen>
     <dimen name="music_detail_bottom_time_size">10sp</dimen>
 
+    <!--加载失败tips-->
+    <dimen name="screen_tips_top">80dp</dimen>
+
 </resources>

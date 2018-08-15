@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -19,16 +18,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.TableLayout;
 
 import com.cantabile.compoundcircle.CompoundCircleProgress;
 
 import org.cantabile.douyin.R;
 import org.cantabile.douyin.activity.BaseFragment;
-import org.cantabile.douyin.activity.fragment.MusicPlayingFra;
 import org.cantabile.douyin.activity.fragment.music.MusicCommunityFra;
 import org.cantabile.douyin.activity.fragment.music.MusicListFra;
 import org.cantabile.douyin.activity.fragment.music.MusicOnlineFra;
+import org.cantabile.douyin.activity.music.MusicPlayingAct;
+import org.cantabile.douyin.activity.music.NetSearchAct;
 import org.cantabile.douyin.adapter.MusicControlViewPagerAdapter;
 import org.cantabile.douyin.adapter.MusicTitleAdapter;
 import org.cantabile.douyin.application.AppCache;
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity
 
     private DrawerLayout drawerLayout;
     private ViewPager viewPager;
-    private ImageView iconLeftMenu;
+    private ImageView iconLeftMenu, iconSearch;
     private TabLayout mTabLayout;
     private TabLayout.Tab musicList;
     private TabLayout.Tab musicOnline;
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity
     private ViewPager musicControlViewpager;
     private MusicControlViewPagerAdapter musicControlAdapter;
     private CompoundCircleProgress controlUI;
-    private MusicPlayingFra mMusicPlayingFra;
+    //private MusicPlayingFra mMusicPlayingFra;
     private boolean isPlayMusicDetailFraShow = false;
 
     @Override
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_main);
 
-        setSystemBarTransparent();// TODO  沉浸式 状态栏问题
+        setSystemBarTransparent();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -104,6 +103,7 @@ public class MainActivity extends AppCompatActivity
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         iconLeftMenu = (ImageView) findViewById(R.id.iconLeftMenu);
+        iconSearch = (ImageView) findViewById(R.id.iconSearch);
         mTabLayout = (TabLayout) findViewById(R.id.musicTitleTab);
         musicList = mTabLayout.getTabAt(0);
         musicOnline = mTabLayout.getTabAt(1);
@@ -124,6 +124,12 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        iconSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NetSearchAct.startNetSearchAct(MainActivity.this);
             }
         });
         controlUI.setOnClickListener(new View.OnClickListener() {
@@ -155,7 +161,8 @@ public class MainActivity extends AppCompatActivity
         musicControlAdapter.setOnViewClick(new MusicControlViewPagerAdapter.OnViewClick() {
             @Override
             public void onClick(View view, int position) {
-                showPlayingFragment();
+                //showPlayingFragment();
+                MusicPlayingAct.startMusicPlayingAct(MainActivity.this);
             }
         });
     }
@@ -183,37 +190,37 @@ public class MainActivity extends AppCompatActivity
         return view;
     }
 
-    private void showPlayingFragment() {
-        if (isPlayMusicDetailFraShow) {
-            return;
-        }
+//    private void showPlayingFragment() {
+//        if (isPlayMusicDetailFraShow) {
+//            return;
+//        }
+//
+//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//        ft.setCustomAnimations(R.anim.fragment_slide_up, 0);
+//        if (mMusicPlayingFra == null) {
+//            mMusicPlayingFra = new MusicPlayingFra();
+//            ft.replace(android.R.id.content, mMusicPlayingFra);
+//        } else {
+//            ft.show(mMusicPlayingFra);
+//        }
+//        ft.commitAllowingStateLoss();
+//        isPlayMusicDetailFraShow = true;
+//    }
 
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.setCustomAnimations(R.anim.fragment_slide_up, 0);
-        if (mMusicPlayingFra == null) {
-            mMusicPlayingFra = new MusicPlayingFra();
-            ft.replace(android.R.id.content, mMusicPlayingFra);
-        } else {
-            ft.show(mMusicPlayingFra);
-        }
-        ft.commitAllowingStateLoss();
-        isPlayMusicDetailFraShow = true;
-    }
-
-    private void hidePlayingFragment() {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.setCustomAnimations(0, R.anim.fragment_slide_down);
-        ft.hide(mMusicPlayingFra);
-        ft.commitAllowingStateLoss();
-        isPlayMusicDetailFraShow = false;
-    }
+//    private void hidePlayingFragment() {
+//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//        ft.setCustomAnimations(0, R.anim.fragment_slide_down);
+//        ft.hide(mMusicPlayingFra);
+//        ft.commitAllowingStateLoss();
+//        isPlayMusicDetailFraShow = false;
+//    }
 
     @Override
     public void onBackPressed() {
-        if (mMusicPlayingFra != null && isPlayMusicDetailFraShow) {
-            hidePlayingFragment();
-            return;
-        }
+//        if (mMusicPlayingFra != null && isPlayMusicDetailFraShow) {
+//            hidePlayingFragment();
+//            return;
+//        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -294,25 +301,25 @@ public class MainActivity extends AppCompatActivity
         controlUI.setMaxValue(music.getDuration());
         musicControlViewpager.setCurrentItem(mPlayService.getPlayingPosition());
 
-        if (mMusicPlayingFra != null && mMusicPlayingFra.isAdded()) {
-            mMusicPlayingFra.onChange(music);
-        }
+//        if (mMusicPlayingFra != null && mMusicPlayingFra.isAdded()) {
+//            mMusicPlayingFra.onChange(music);
+//        }
     }
 
     @Override
     public void onPlayerStart() {
         controlUI.setChecked(true);
-        if (mMusicPlayingFra != null && mMusicPlayingFra.isAdded()) {
-            mMusicPlayingFra.onPlayerStart();
-        }
+//        if (mMusicPlayingFra != null && mMusicPlayingFra.isAdded()) {
+//            mMusicPlayingFra.onPlayerStart();
+//        }
     }
 
     @Override
     public void onPlayerPause() {
         controlUI.setChecked(false);
-        if (mMusicPlayingFra != null && mMusicPlayingFra.isAdded()) {
-            mMusicPlayingFra.onPlayerPause();
-        }
+//        if (mMusicPlayingFra != null && mMusicPlayingFra.isAdded()) {
+//            mMusicPlayingFra.onPlayerPause();
+//        }
     }
 
     @Override
@@ -321,16 +328,16 @@ public class MainActivity extends AppCompatActivity
         controlUI.setMaxValue(duration);
         controlUI.setValue(progress);
 
-        if (mMusicPlayingFra != null && mMusicPlayingFra.isAdded()) {
-            mMusicPlayingFra.onPublish(duration, progress);
-        }
+//        if (mMusicPlayingFra != null && mMusicPlayingFra.isAdded()) {
+//            mMusicPlayingFra.onPublish(duration, progress);
+//        }
     }
 
     @Override
     public void onBufferingUpdate(int percent) {
-        if (mMusicPlayingFra != null && mMusicPlayingFra.isAdded()) {
-            mMusicPlayingFra.onBufferingUpdate(percent);
-        }
+//        if (mMusicPlayingFra != null && mMusicPlayingFra.isAdded()) {
+//            mMusicPlayingFra.onBufferingUpdate(percent);
+//        }
     }
 
     @Override
